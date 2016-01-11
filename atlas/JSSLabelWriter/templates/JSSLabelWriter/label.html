@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Print Label{% endblock %}
+
+{% block body_block %}
+<div class="col-md-2 col-md-offset-5">
+<div class="panel panel-default">
+  <div class="panel-body">
+    {{ results.computer.general.name }}<br />
+    {{ results.computer.general.serial_number }}<br />
+    {{ results.computer.hardware.model }}<br />
+    {{ results.computer.location.real_name }}<br />
+  </div>
+</div>
+</div>
+
+{% endblock %}
