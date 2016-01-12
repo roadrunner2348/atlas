@@ -1,4 +1,114 @@
-.col-centered {
-  display: inline-block;
-  float:none;
+
+@media only screen {
+  #label #logo {
+      height: 60px;
+      width: 63px;
+      float:left;
+    }
+  #label #district {
+    position:absolute;
+    top:5px;
+    right:18px;
+  }
+  #label #serial_number {
+    position:absolute;
+    bottom:10px;
+    right:18px;
+  }
+  #label #model {
+    position: absolute;
+    bottom:54px;
+    right:18px;
+    height:20px;
+    overflow: hidden;
+  }
+  #label #name {
+    position:absolute;
+    bottom:110px;
+    right:18px;
+  }
+  #label #user {
+    position: absolute;
+    bottom: 90px;
+    right:18px;
+  }
+  #label #school {
+    position: absolute;
+    bottom:72px;
+    right:18px;
+  }
+  #label {
+    height:2in;
+    width:3in;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    display:block;
+    margin:0 auto;
+    position:relative;
+    font-size: 16px;
+  }
+  .label-wrapper {
+    margin:10px;
+  }
+}
+@media only print {
+  body {
+    width:3.00in;
+    height:2.00in;
+    padding:0px;
+    margin:5px;
+    position:absolute;
+  }
+  #label #serial_number{
+      bottom:5px;
+      right:10px;
+      position:absolute;
+    }
+  #label #logo {
+  		height: 60px;
+  		width: 63px;
+  		position: absolute;
+  		top: 5px;
+  		left: 5px;
+  	}
+  #label #model {
+      bottom:50px;
+      right:18px;
+      height:20px;
+      position:absolute;
+      overflow: hidden;
+  }
+  #label #user {
+    bottom: 70px;
+    right:18px;
+    position:absolute;
+  }
+  #label #user {
+    bottom: 90px;
+    right:18px;
+    position:absolute;
+  }
+  #label #name {
+    bottom: 110px;
+    right:18px;
+    position:absolute;
+  }
+  #label #school {
+    bottom:70px;
+    right: 18px;
+    position:absolute;
+  }
+  #label #district {
+    top:10px;
+    right: 18px;
+    position:absolute;
+  }
+  #label {
+      height:2.00in;
+      width:3.00in;
+      display:block;
+      text-align:left;
+      font-size:16px;
+    }
 }

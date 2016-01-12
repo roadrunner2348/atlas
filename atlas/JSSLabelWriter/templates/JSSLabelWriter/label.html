@@ -5,15 +5,21 @@
 {% block title %}Print Label{% endblock %}
 
 {% block body_block %}
-<div class="col-md-2 col-md-offset-5">
-<div class="panel panel-default">
-  <div class="panel-body">
-    {{ results.computer.general.name }}<br />
-    {{ results.computer.general.serial_number }}<br />
-    {{ results.computer.hardware.model }}<br />
-    {{ results.computer.location.real_name }}<br />
+<div class="label-wrapper">
+  <div id="label">
+    <img id="logo" src="{% static 'img/ktlogo.png' %}"></img>
+    <span id="district">Keansburg School District</span>
+    <span id="name">{{ results.computer.general.name }}</span>
+    <span id="user">{{ results.computer.location.real_name }}</span>
+    <span id="school">{{ results.computer.location.building }}</span>
+    <span id="model">{{ results.computer.hardware.model }}</span>
+    <span id="serial_number" class="barcode-39">{{ results.computer.general.serial_number }}</span>
   </div>
 </div>
-</div>
+<div class="col-md-2 col-md-offset-5 hidden-print">
+<br/>
+  <a class="btn btn-default center-block" href="javascript:window.print()">Print Label</a><br />
+  <a class="btn btn-default center-block" href="{% url 'index' %}">Done</a>
 
+</div>
 {% endblock %}

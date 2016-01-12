@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 
 urlpatterns = [
+    url(r'^$', lambda r: HttpResponseRedirect('jsslabelwriter/')),
     url(r'^admin/', admin.site.urls),
     url(r'^jsslabelwriter/', include('JSSLabelWriter.urls')),
     url(r'^user_management/', include('user_management.urls')),
