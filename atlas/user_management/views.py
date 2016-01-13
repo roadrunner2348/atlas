@@ -18,10 +18,11 @@ def user_login(request):
                 login(request, user)
                 return HttpResponseRedirect('/jsslabelwriter')
             else:
-                return HttpResponse('Your Atlas account has been disabled, please contact your system administrator')
+                message = "Your account is disabled, please contact your system admin."
+                return render(request, 'user_management/login.html', {'message':message})
         else:
-            print "Invalid Login credentials: {0}, {1}".format(username,password)
-            return HttpResponse("Invalid Login details were supplied")
+            message = "Invalid Login Credentials, please try again."
+            return render(request, 'user_management/login.html', {'message':message})
     else:
         if request.user.is_authenticated():
             return HttpResponseRedirect('/jsslabelwriter')
@@ -31,5 +32,5 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    
+
     return HttpResponseRedirect('/user_management/login')
