@@ -11,6 +11,7 @@ def device_search_form(request):
         search_string = request.POST['device_search']
         if search_string == "":
             message = "Search string cannot be blank. Please enter a search string"
+            return render(request, 'JSSLabelWriter/device_search_form.html', {'message':message, 'search_string':search_string})
         else:
             url = "JSSResource/computers/match/*" + search_string + "*"
             results = get_jss_data(url)
