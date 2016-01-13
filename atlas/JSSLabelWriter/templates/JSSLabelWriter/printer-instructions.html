@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Print Instructions{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron col-md-8 col-md-offset-2">
+<h3>Zebra GX420t Setup Instructions</h3>
+  <ol>
+    <li>Open the following web address: <a href="http://localhost:631/admin" target="_blank">http://localhost:631/admin</a>. If you get an error about the web interface being disabled, follow the instructions on the page to enable it.</li>
+    <li>In the printers section click the "Add Printer" Button. If you recieve a login prompt use your local administrator credentials.</li>
+    <li>From the list, select "AppSocket/HP JetDirect" and click continue</li>
+    <li>In the connection field, enter the following: socket://10.21.99.44:9100</li>
+    <li>Fill out the name, description and location fields. These fields are for your reference and can be anything</li>
+    <li>From the list of Manufacters, select Zebra. For Model select Zebra ZPL Label Printer (en), then click "Add Printer".</li>
+    <li>For Media Size select 3.00x2.00", ensure the resolution is set to 203dpi, the click "Set Default Options"</li>
+    <li>The printer is now setup, please make sure that you select the correct media size in the browser and that margins is set to none</li>
+  </ol>
+</div>
+{% endblock %}

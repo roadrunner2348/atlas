@@ -5,10 +5,20 @@
 {% block title %}Device Search{% endblock %}
 
 {% block body_block %}
-
+<div class="jumbotron">
+  <h1>Read Me First!</h1>
+  <p>This application is still a work in progress, so there a few things you should be aware of:
+    <ul>
+      <li>Google Chrome is currently the only browser that is supported</li>
+      <li>Label printing only supports 3.00" x 2.00" labels</li>
+      <li>When printing make sure the Paper Size is set to 3.00x2.00" and Margins are set to None.</li>
+    </ul>
+  </p>
+  <p><a class="btn btn-primary" href="{% url 'JSSLabelWriter:printer-instructions' %}">Label Printer Setup Instructions</a></p>
+</div>
 <div class="panel panel-default col-md-6 col-md-offset-3">
   <div class="panel-body">
-  <form id="login_form" method="post" action="{% url 'index' %}">
+  <form id="login_form" method="post" action="{% url 'JSSLabelWriter:index' %}">
     {% csrf_token %}
     <div class="form-group">
       <label for="device_search_field">Device Search</label>
@@ -40,7 +50,7 @@
       </tr>
     {% for device in results %}
     <tr>
-      <td><a href="{% url 'label' device.id %}">{{ device.name }}</a></td>
+      <td><a href="{% url 'JSSLabelWriter:label' device.id %}">{{ device.name }}</a></td>
       <td>{{ device.serial_number }}</td>
       <td>{{ device.realname}}</td>
       <td>{{ device.department_name }}</td>
