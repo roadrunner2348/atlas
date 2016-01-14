@@ -42,7 +42,7 @@ def label(request, device_id):
         return render(request, 'JSSLabelWriter/label.html', {'message':message})
 @login_required
 def printer_instructions(request):
-    return render(request, 'jsslabelwriter/printer-instructions.html', {})
+    return render(request, 'JSSLabelWriter/printer-instructions.html', {})
 
 def get_jss_data(url):
 
