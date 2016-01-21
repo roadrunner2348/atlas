@@ -5,9 +5,9 @@
 {% block title %}Device Search{% endblock %}
 
 {% block body_block %}
+<div class="col-md-8 col-md-offset-2">
 <div class="jumbotron">
-  <h1>Read Me First!</h1>
-  <p>This application is still a work in progress, so there a few things you should be aware of:
+  <p><span class="glyphicon glyphicon-exclamation-sign"></span> This application is still a work in progress, so there a few things you should be aware of:
     <ul>
       <li>Google Chrome is currently the only browser that is supported</li>
       <li>Label printing only supports 3.00" x 2.00" labels</li>
@@ -15,6 +15,7 @@
     </ul>
   </p>
   <p><a class="btn btn-primary" href="{% url 'JSSLabelWriter:printer-instructions' %}">Label Printer Setup Instructions</a></p>
+</div>
 </div>
 <div class="panel panel-default col-md-6 col-md-offset-3">
   <div class="panel-body">
