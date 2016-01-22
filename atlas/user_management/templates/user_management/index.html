@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_block %}
+
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <b>Users</b>
+      <span class="pull-right"><a href="#" class="btn btn-default btn-xs">New User</span></a></span>
+    </div>
+
+      <div class="list-group">
+        {% for person in user_list %}
+          <a href="#" class="list-group-item clearfix">
+            <h4 class="list-group-item-heading">{{ person.first_name }} {{ person.last_name }}</h4>
+            <span class="list-group-item-text">{{ person.username }}</span><br />
+            <span class="list-group-item-text">Email: {{ person.email }}</span>
+            <span class="pull-right">Admin:
+              {% if person.is_staff %}
+                <span class="glyphicon glyphicon-ok"></span>
+              {% else %}
+              <span class="glyphicon glyphicon-remove"></span>
+              {% endif %}
+            </span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}

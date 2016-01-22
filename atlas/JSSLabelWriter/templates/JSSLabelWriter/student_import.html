@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Student Importer{% endblock %}
+
+{% block body_block %}
+
+<form id="student_import" method="post" action="/jsslabelwriter/student_import/">
+  {% csrf_token %}
+  <div class="form-group">
+  {% for field in form.visible_fields %}
+    {{ field.errors }}
+    {{ field.help_text }}
+    {{ field }}
+  {% endfor %}
+  </div>
+  <input type="submit" class="btn btn-default" value="submit" />
+</form>
+
+{% if r %}
+  {{ r }}
+{% endif %}
+
+{% endblock %}
