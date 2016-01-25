@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ person.first_name }} {{ person.last_name }}{% endblock %}
+
+{% block body_block %}
+<div class="col-md-6 col-md-offset-3">
+  <ol class="breadcrumb">
+    <li><a href="{% url 'user_management:index' %}">Manage Users</a></li>
+    <li class="active">{{ person.first_name}} {{ person.last_name }}</li>
+  </ol>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>{{ person.first_name }} {{ person.last_name}}</span>
+    <div class="btn-group btn-group-xs pull-right">
+      <a href="{% url 'user_management:edit' person.id %}" class="btn btn-default">Edit</a>
+      <a href="#" class="btn btn-default">Delete</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-6">
+      <p>
+        <span class="label {{ person.is_active|yesno:'label-success,label-warning' }}">{{ person.is_active|yesno:"Active,Disabled"}}</span>
+        {% if person.is_staff %}<span class="label label-primary">Administrator</span>{% endif %}
+      </p>
+      <p>Username: {{ person.username }}</p>
+      <p>E-Mail: {{ person.email }}</p>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

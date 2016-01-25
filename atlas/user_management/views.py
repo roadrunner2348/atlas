@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
+from .forms import UserForm
+
 def user_login(request):
     # If the request is POST the user is attempting to login.
     if request.method == 'POST':
@@ -35,7 +37,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
 
-    return HttpResponseRedirect('/user_management/login')
+    return HttpResponseRedirect('/user_management/login/')
 
 @login_required
 def index(request):
@@ -46,3 +48,18 @@ def index(request):
 def detail(request, user_id):
     person = get_object_or_404(User, pk=user_id)
     return render(request, 'user_management/detail.html', {'person':person})
+
+@login_required
+def edit(request, user_id):
+    person = get_object_or_404(User, pk=user_id)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=person)
+        if form.is_valid():
+            form.save()
+            return render(request, 'user_management/detail.html', {'person':person} )
+        else:
+            return render(request, 'user_management/edit.html', {'form':form, 'person':person})
+    else:
+        form = UserForm(instance=person)
+        return render(request, 'user_management/edit.html', {'form':form, 'person':person })
