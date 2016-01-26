@@ -14,8 +14,9 @@
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
       <b>Users</b>
-      <span class="pull-right"><a href="#" class="btn btn-default btn-xs">New User</span></a></span>
+      <span class="pull-right"><a href="{% url 'user_management:create' %}" class="btn btn-default btn-xs">New User</span></a></span>
     </div>
+    <div class="table-responsive">
       <table class="table table-hover">
         <tr>
           <th>Name</th>
@@ -30,7 +31,7 @@
           <td><a href="{% url 'user_management:detail' person.id %}"> {{ person.last_name }}, {{ person.first_name }}</a></td>
           <td>{{ person.username }}</td>
           <td>{{ person.email }}</td>
-          <td><span class="label {{ person.is_active|yesno:'label-success,label-danger' }}">{{ person.is_active|yesno:"Active,Disabled" }}</span></td>
+          <td><span class="label {{ person.is_active|yesno:'label-success,label-warning' }}">{{ person.is_active|yesno:"Active,Disabled" }}</span></td>
           <td><span class="label {{ person.is_staff|yesno:'label-primary,label-default' }}">{{ person.is_staff|yesno:"Admin,User" }}</span></td>
           <td class="text-center">
             <div class="btn-group btn-group-xs">
@@ -40,6 +41,7 @@
         </tr>
         {% endfor %}
       </table>
+    </div>
     </div>
 </div>
 

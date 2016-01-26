@@ -4,4 +4,9 @@ from django.contrib.auth.models import User
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'is_active', 'is_staff']
+        fields = ['first_name', 'last_name', 'username', 'email', 'is_active', 'is_staff']
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True

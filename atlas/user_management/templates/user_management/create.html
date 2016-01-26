@@ -2,21 +2,18 @@
 
 {% load staticfiles %}
 
-{% load widget_tweaks %}
-
-{% block title %}Edit - {{ person.first_name }} {{ person.last_name }}{% endblock %}
+{% block title %}New User{{ person.last_name }}{% endblock %}
 
 {% block body_block %}
 
 <div class="col-md-6 col-md-offset-3">
   <ol class="breadcrumb">
     <li><a href="{% url 'user_management:index' %}">Manage Users</a></li>
-    <li><a href="{% url 'user_management:detail' person.id %}">{{ person.first_name}} {{ person.last_name }}</a></li>
-    <li class="active">Edit</li>
+    <li class="active">New User</li>
   </ol>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <span>Edit: {{ person.first_name }} {{ person.last_name}}</span>
+    <span>New User</span>
   </div>
   <div class="panel-body">
     {% if form.errors %}
@@ -24,11 +21,11 @@
       {{ form.errors }}
     </div>
     {% endif %}
-    <form action="{% url 'user_management:edit' person.id %}" method="POST">
+    <form action="{% url 'user_management:create' %}" method="POST">
       {% csrf_token %}
-      {% include 'user_management/user_form.html' with form=form %}
+      {% include "user_management/user_form.html" with form=form %}
       <button type="submit" class="btn btn-primary">Save</button>
-      <a href="{% url 'user_management:detail' person.id %}" class="btn btn-default">Cancel</a>
+      <a href="{% url 'user_management:index' %}" class="btn btn-default">Cancel</a>
     </form>
   </div>
 </div>

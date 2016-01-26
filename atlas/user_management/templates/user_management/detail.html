@@ -11,17 +11,17 @@
     <li class="active">{{ person.first_name}} {{ person.last_name }}</li>
   </ol>
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel-heading clearfix">
     <span>{{ person.first_name }} {{ person.last_name}}</span>
     <div class="btn-group btn-group-xs pull-right">
+      <a href="{% url 'user_management:change_status' person.id %}" class="btn {{ person.is_active|yesno:'btn-success, btn-warning' }}">{{ person.is_active|yesno:"Active, Disabled"}}</a>
       <a href="{% url 'user_management:edit' person.id %}" class="btn btn-default">Edit</a>
-      <a href="#" class="btn btn-default">Delete</a>
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#deleteModal">Delete</button>
     </div>
   </div>
   <div class="panel-body">
     <div class="col-md-6">
       <p>
-        <span class="label {{ person.is_active|yesno:'label-success,label-warning' }}">{{ person.is_active|yesno:"Active,Disabled"}}</span>
         {% if person.is_staff %}<span class="label label-primary">Administrator</span>{% endif %}
       </p>
       <p>Username: {{ person.username }}</p>
@@ -29,5 +29,22 @@
     </div>
   </div>
 </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteModalLabel">Delete User?</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete user {{ person.first_name }} {{ person.last_name }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="{% url 'user_management:delete' person.id %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

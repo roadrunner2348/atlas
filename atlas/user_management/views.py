@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from .forms import UserForm
 
@@ -63,3 +63,34 @@ def edit(request, user_id):
     else:
         form = UserForm(instance=person)
         return render(request, 'user_management/edit.html', {'form':form, 'person':person })
+
+@login_required
+def create(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            person = form.save()
+            return render(request, 'user_management/detail.html', {'person':person})
+        else:
+            return render(request, 'user_management/create.html', {'form':form})
+    else:
+        form = UserForm()
+        return render(request, 'user_management/create.html', {'form':form})
+
+@login_required
+def delete(request, user_id):
+    person = get_object_or_404(User, pk=user_id)
+    person.delete()
+
+    return redirect('/user_management/')
+
+@login_required
+def change_status(request, user_id):
+    person = get_object_or_404(User, pk=user_id)
+    if person.is_active:
+        person.is_active = False
+    else:
+        person.is_active = True
+    person.save()
+
+    return redirect('/user_management/' + str(person.id))
