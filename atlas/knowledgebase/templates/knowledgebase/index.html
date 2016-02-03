@@ -6,6 +6,7 @@
 
 {% block body_block %}
 
+<div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -18,22 +19,34 @@
       </div>
     </div>
 </div>
-<div class="col-md-6">
+</div>
+<div class="row">
+<div class="col-md-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <b>Menu</b>
+    </div>
+    <div class="list-group">
+      <a href="{% url 'knowledgebase:create_article' %}" class="list-group-item">New Article</a>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
   <div class="panel panel-default">
     <div class="panel-heading">
       <b>Recently Updated Articles</b>
     </div>
       <div class="list-group">
         {% for article in recently_modified %}
-        <a href="#" class="list-group-item">
-          <h4 class="list-group-item-heading">{{ article.title }}</h4>
-          <p class="list-group-item-text">{{ article.body | truncatewords:20 }}</p>
+        <a href="{% url 'knowledgebase:article_detail' article.id %}" class="list-group-item">
+          <b class="list-group-item-heading">{{ article.title | truncatewords:15 }}</b>
+          <p class="list-group-item-text">{{ article.body | truncatewords:30 | striptags }}</p>
         </a>
         {% endfor %}
       </div>
   </div>
 </div>
-<div class=col-md-6>
+<div class=col-md-2>
   <div class="panel panel-default">
     <div class="panel-heading">
       <b>Search by Tags</b>
@@ -41,12 +54,13 @@
       <div class="list-group">
         {% for tag in tags%}
         <a href="#" class="list-group-item">
-          <span class="badge">{{ tag.articles.count }}</span>
+          <span class="badge">{{ tag.article_set.count }}</span>
           {{tag.name}}
         </a>
         {% endfor %}
       </div>
   </div>
+</div>
 </div>
 
 {% endblock %}

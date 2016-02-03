@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body_block %}
+
+<div class="col-md-10 col-md-offset-1">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <b>{% if edit %}Edit Article{% else %}New Article{% endif %}</b>
+  </div>
+  <div class="panel-body">
+  {% if form.errors %}
+    <div class="alert alert-warning">
+      {{ form.errors }}
+    </div>
+  {% endif %}
+  {% if edit %}
+    <form method="post" action="{% url 'knowledgebase:edit_article' article.id %}">
+  {% else %}
+    <form method="post" action="{% url 'knowledgebase:create_article' %}">
+  {% endif %}
+      {% csrf_token %}
+        <div class="form-group {% if form.title.errors %}has-error{% endif %}">
+          <label for="{{ form.title.id_for_label }}" class="control-label">{{ form.title.label }}</label>
+          {{ form.title|add_class:"form-control" }}
+        </div>
+        <div class="form-group {% if form.body.errors %}has-error{% endif %}">
+          <label for="{{ form.body.id_for_label }}" class="control-label">{{ form.body.label }}</label>
+          {{ form.body|add_class:"form-control" }}
+        </div>
+        <div class="form-group {% if form.title.errors %}has-error{% endif %}">
+          <label for="{{ form.tags.id_for_label }}" class="control-label">{{ form.tags.label }}</label>
+          {{ form.tags|add_class:"chosen-select form-control" }}
+        </div>
+        <input class="btn btn-primary" type="submit" value="{% if edit %}Update Article{% else %}Save{% endif %}" />
+      </form>
+  </div>
+</div>
+<script>
+  CKEDITOR.replace('id_body', { height:300 })
+</script>
+{% endblock %}
