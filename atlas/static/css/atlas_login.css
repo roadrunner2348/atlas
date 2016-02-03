@@ -1,0 +1,15 @@
+body {
+  background-image:url('/static/img/dc_background.jpg');
+  background-position: center center;
+}
+.container {
+  height:100%;
+}
+.col-md-4 {
+  position:absolute;
+  left: 0;
+  top:40%;
+  bottom:0;
+  right: 0;
+  margin:auto;
+}
