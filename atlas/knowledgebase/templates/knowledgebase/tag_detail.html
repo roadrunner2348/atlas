@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block body_block %}
+<div class="col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="lead">{{ object.name }} Articles:</span>
+    </div>
+    {% with object.article_set.all as article_list %}
+    {% include 'knowledgebase/article_list.html' %}
+    {% endwith %}
+  </div>
+</div>
+{% endblock %}

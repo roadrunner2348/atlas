@@ -36,24 +36,19 @@
     <div class="panel-heading">
       <b>Recently Updated Articles</b>
     </div>
-      <div class="list-group">
-        {% for article in recently_modified %}
-        <a href="{% url 'knowledgebase:article_detail' article.id %}" class="list-group-item">
-          <b class="list-group-item-heading">{{ article.title | truncatewords:15 }}</b>
-          <p class="list-group-item-text">{{ article.body | truncatewords:30 | striptags }}</p>
-        </a>
-        {% endfor %}
-      </div>
+      {% include 'knowledgebase/article_list.html' %}
   </div>
 </div>
 <div class=col-md-2>
   <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-heading clearfix">
       <b>Search by Tags</b>
+      <!-- Button trigger modal -->
+      <a class="btn btn-default btn-xs pull-right" href="{% url 'knowledgebase:create_tag' %}">New Tag</a>
     </div>
       <div class="list-group">
         {% for tag in tags%}
-        <a href="#" class="list-group-item">
+        <a href="{% url 'knowledgebase:tag_detail' tag.id %}" class="list-group-item">
           <span class="badge">{{ tag.article_set.count }}</span>
           {{tag.name}}
         </a>

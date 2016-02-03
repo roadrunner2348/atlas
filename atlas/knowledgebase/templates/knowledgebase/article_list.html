@@ -1,0 +1,16 @@
+<div class="list-group">
+  {% if article_list.count == 0 %}
+  <div class="list-group-item">
+    <b class="list-group-item-heading">
+      No Articles Found!
+    </b>
+  </div>
+  {% else %}
+  {% for article in article_list %}
+  <a href="{% url 'knowledgebase:article_detail' article.id %}" class="list-group-item">
+    <b class="list-group-item-heading">{{ article.title | truncatewords:15 }}</b>
+    <p class="list-group-item-text">{{ article.body | truncatewords:30 | striptags | safe }}</p>
+  </a>
+  {% endfor %}
+  {% endif %}
+</div>

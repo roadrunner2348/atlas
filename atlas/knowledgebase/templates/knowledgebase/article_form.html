@@ -14,11 +14,7 @@
     <b>{% if edit %}Edit Article{% else %}New Article{% endif %}</b>
   </div>
   <div class="panel-body">
-  {% if form.errors %}
-    <div class="alert alert-warning">
-      {{ form.errors }}
-    </div>
-  {% endif %}
+  {% include 'form_alert_box.html' %}
   {% if edit %}
     <form method="post" action="{% url 'knowledgebase:edit_article' article.id %}">
   {% else %}

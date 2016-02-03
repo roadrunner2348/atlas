@@ -7,7 +7,7 @@
 <div class="col-md-10">
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
-    <small><em>Created by {{ article.author }} on {{ article.date_created }}</em></small>
+    <small><em>Last Modified on {{ article.date_modified }} by {{ article.author }}</em></small>
     <div class="pull-right">
 
       <!-- Single button -->
@@ -25,6 +25,7 @@
     <span class="lead">{{ article.title }}</span>
     <hr>
     <p>{{ article.body|safe }}</p>
+    <p><small><em>Created on {{ article.date_created }} by {{ article.author }}</em></small></p>
   </div>
 </div>
 </div>
@@ -33,11 +34,11 @@
     <div class="panel-heading">
       <b>Tags</b>
     </div>
-    <ul class="list-group">
+    <div class="list-group">
       {% for tag in article.tags.all %}
-        <li class="list-group-item">{{ tag.name }}</li>
+        <a href="{% url 'knowledgebase:tag_detail' tag.id %}" class="list-group-item">{{ tag.name }}</a>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </div>
 </div>
