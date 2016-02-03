@@ -34,7 +34,7 @@
                   <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown-header">Welcome {{ user.first_name}}</li>
+                  <li><a href="{% url 'user_management:about' %}">About</a></li>
                   <li><a href="/admin">Admin</a></li>
                   <li role="seperator" class="divider"></li>
                   <li><a href="/user_management/logout">Logout</a></li>

@@ -34,3 +34,7 @@ def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect('/user_management/login')
+
+@login_required
+def about(request):
+    return render(request, 'about.html', {})
