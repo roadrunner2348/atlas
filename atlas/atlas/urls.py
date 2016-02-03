@@ -21,6 +21,5 @@ urlpatterns = [
     url(r'^$', lambda r: HttpResponseRedirect('jsslabelwriter/')),
     url(r'^admin/', admin.site.urls),
     url(r'^jsslabelwriter/', include('JSSLabelWriter.urls')),
-    url(r'^kb/', include('knowledgebase.urls')),
     url(r'^user_management/', include('user_management.urls')),
 ]
