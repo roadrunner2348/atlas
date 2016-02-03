@@ -11,5 +11,19 @@ urlpatterns = [
     url(r'^(?P<user_id>[0-9]+)/change_status/$', views.change_status, name="change_status"),
     url(r'^(?P<user_id>[0-9]+)/delete/$', views.delete, name="delete"),
     url(r'^create/$', views.create, name = 'create'),
+    url(r'^update_password$',
+        'django.contrib.auth.views.password_change',
+        name='update_password',
+        kwargs={
+            'template_name':'user_management/update_password.html',
+            'post_change_redirect':'user_management:update_password_done',
+        }
+    ),
+    url(r'^update_password_done$',
+        'django.contrib.auth.views.password_change_done',
+        name='update_password_done',
+        kwargs={'template_name':'user_management/update_password_done.html'}
+    ),
+
 
 ]
