@@ -20,7 +20,7 @@
       {% for field in form %}
         <div class="form-group {% if field.errors %}has-error{% endif %}">
           <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
-          {{ field|add_class:"form-control" }}
+          {{ field|add_class:"form-control tolowercase" }}
         </div>
       {% endfor %}
       <input class="btn btn-primary" type="submit" value="Save" />

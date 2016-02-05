@@ -11,7 +11,7 @@
 </div>
 <div class="form-group {% if form.username.errors %}has-error{% endif %}">
   <label for="{{ form.username.id_for_label }}" class="control-label">{{ form.username.label }}</label>
-  {{ form.username|add_class:"form-control" }}
+  {{ form.username|add_class:"form-control tolowercase" }}
 </div>
 <div class="form-group {% if form.email.errors %}has-error{% endif %}">
   <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
