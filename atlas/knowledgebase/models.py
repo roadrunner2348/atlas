@@ -11,6 +11,13 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('tag_detail', kwargs={'pk': self.pk})
 
+    def delete(self, *args, **kwargs):
+        """
+        Override default model method so articles are not deleted when a tag is removed
+        """
+        self.article_set.clear()
+        super(Tag, self, *args, **kwargs).delete()
+
     class Meta:
         ordering = ('name',)
 
@@ -24,3 +31,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def delete(self, *args, **kwargs):
+        """
+        Override default model method so tags are not deleted when a article is removed
+        """
+        self.tags.clear()
+        super(Article, self, *args, **kwargs).delete()

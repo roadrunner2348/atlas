@@ -8,7 +8,7 @@
   {% else %}
   {% for article in article_list %}
   <a href="{% url 'knowledgebase:article_detail' article.id %}" class="list-group-item">
-    <b class="list-group-item-heading">{{ article.title | truncatewords:15 }}</b>
+    <b class="list-group-item-heading">{{ article.title | truncatewords:15 }}</b><span class="pull-right"><small><em>Last Modified on {{ article.date_modified }}</em></small></span>
     <p class="list-group-item-text">{{ article.body | truncatewords:30 | striptags | safe }}</p>
   </a>
   {% endfor %}

@@ -1,5 +1,8 @@
 
 @media only screen {
+  body {
+    background-color: #ffffff;
+  }
   #label #logo {
       height: 60px;
       width: 63px;

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form method="post" action="{% url 'knowledgebase:article_search' %}">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control" name="search_string" placeholder="Search Articles..." {% if search_string %}value="{{ search_string }}"{% endif %}>
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"</button>
+              </span>
+            </div>
+          </form>
+      </div>
+    </div>
+</div>
+</div>
