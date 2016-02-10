@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body_block %}
+
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete Program "{{ object }}"?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+{% endblock %}

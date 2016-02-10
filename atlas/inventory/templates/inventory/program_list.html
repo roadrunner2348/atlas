@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}inventory{% endblock %}
+
+{% block body_block %}
+<ul>
+{% for program in object_list %}
+  <li><a href="{% url 'inventory:program_detail' program.id %}">{{ program.name }}</a></li>
+{% endfor %}
+</ul>
+<a href="{% url 'inventory:program_create' %}" class="btn btn-default">New Program</a>
+{% endblock %}

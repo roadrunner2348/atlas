@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^jsslabelwriter/', include('JSSLabelWriter.urls')),
     url(r'^kb/', include('knowledgebase.urls')),
     url(r'^user_management/', include('user_management.urls')),
+    url(r'^inventory/', include('inventory.urls')),
+
 ]

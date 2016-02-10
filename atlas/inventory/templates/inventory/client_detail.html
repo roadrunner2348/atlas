@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body_block %}
+
+<h3>{{ object.full_name }}</h3>
+<h5>Details</h5>
+<ul>
+  <li>{{ object.username }}</li>
+  <li>{{ object.program }}</li>
+</ul>
+<h5>Computers</h5>
+<ul>
+  {% for computer in object.computer_set.all %}
+    <li>{{ computer.serial_number }}</li>
+    <li>{{ computer.model }}</li>
+  {% endfor %}
+</ul>
+
+
+
+
+<a href="{% url 'inventory:client_delete' object.pk %}" class="btn btn-default">Delete Me?</a>
+<a href="{% url 'inventory:client_update' object.pk %}" class="btn btn-default">Edit Me?</a>
+
+{% endblock %}

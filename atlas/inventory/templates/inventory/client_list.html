@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}inventory{% endblock %}
+
+{% block body_block %}
+<ul>
+{% for client in object_list %}
+  <li><a href="{% url 'inventory:client_detail' client.pk %}">{{ client.full_name }}</a></li>
+{% endfor %}
+</ul>
+<a href="{% url 'inventory:client_create' %}" class="btn btn-default">New Client</a>
+{% endblock %}

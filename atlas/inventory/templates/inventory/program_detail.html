@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body_block %}
+
+<h4>{{ object.name }}</h4>
+
+<ul>
+  {% for client in object.client_set.all %}
+    <li>{{ client.username }} - {{ client.full_name }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'inventory:program_delete' object.id %}" class="btn btn-default">Delete Me?</a>
+<a href="{% url 'inventory:program_update' object.id %}" class="btn btn-default">Edit Me?</a>
+{% endblock %}
